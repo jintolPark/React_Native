@@ -1,0 +1,24 @@
+android 환경 변수 설정
+
+터미널을 열고
+
+ls -al 해서 .bash_profile 가있는지 확인한후
+없다면 생성
+
+생성후 .bash_profile를 연다
+vi ~/.bash_profile
+
+i를 눌러
+insert 한후 추가
+
+*adb 환경변수 설정
+export ADB_HOME=/Users/jinseokmacbook/Library/Android/sdk/platform-toolsexport 
+export PATH=${ADB_HOME}:$PATH
+
+*emulator 환경변수 설정
+export EMULATOR_HOME=/Users/jinseokmacbook/Library/Android/sdk/emulator
+export PATH=${EMULATOR_HOME}:$PATH
+
+*SDK 환경변수 설정
+export ANDROID_SDK_ROOT=/Users/jinseokmacbook/Library/Android/sdk 
+export PATH=${ANDROID_SDK_ROOT}:$PATH
