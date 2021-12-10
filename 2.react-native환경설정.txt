@@ -1,0 +1,36 @@
+react-native 환경 설정
+
+폴더 생성후 폴더에 설치항목
+npm install -g expo-cli
+
+jinseokapp 이란 프로젝트 이름으로 typescript 템플릿을 이용하여 생성
+expo init jinseokapp -t expo-template-blank-typescript
+
+앱을 emulator에 실행
+npm run android
+
+네비게이션 환경구성 인스톨
+// react-navigation
+https://reactnavigation.org/
+
+- SafeAreaContext(노치 및 펀치홀 영역 제어)
+  expo install react-native-screens react-native-safe-area-context
+
+- NAVIGATION,  https://reactnavigation.org/docs/getting-started  
+  -> npm install @react-navigation/native
+
+- Tab Navigtion, https://reactnavigation.org/docs/tab-based-navigation
+  -> npm install @react-navigation/bottom-tabs
+
+- Stack Navigation, https://reactnavigation.org/docs/hello-react-navigation
+  -> npm install @react-navigation/native-stack
+
+npm i @react-native-async-storage/async-storage
+
+npm install --save nanoid
+
+
+// 탭 내비게이션
+3개의 탭에 대한 컴포넌트를 만듦(상단에 필수로 import React from 'react')
+Home, List, Tasks
+
