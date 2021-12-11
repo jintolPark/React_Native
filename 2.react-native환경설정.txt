@@ -34,5 +34,3 @@ npm install --save nanoid
 3개의 탭에 대한 컴포넌트를 만듦(상단에 필수로 import React from 'react')
 Home, List, Tasks
 
-11
-
