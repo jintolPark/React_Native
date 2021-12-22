@@ -15,6 +15,7 @@ import {
 // 탭별 컴포넌트 import
 import Home from "./components/Home";
 import Todo from "./components/Todo";
+import Photo from "./components/Photo";
 import Product from "./components/Product";
 import Favorite from "./components/Favorite";
 
@@ -24,6 +25,7 @@ import Detail from "./components/Detail";
 // https://ionic.io/ionicons
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { colors } from "./styles";
 
 // 탭 네비게이터 생성
 // createBottomTabNavigator() => 탭내비게이터 함수 컴포넌트를 반환
@@ -33,6 +35,7 @@ const Tab = createBottomTabNavigator();
 
 // 스택 네비게이터 생성
 const ProductStack = createNativeStackNavigator();
+const HomeStack = createNativeStackNavigator();
 
 // 스택 스크린 생성
 const ProductScreen = () => {
@@ -41,6 +44,14 @@ const ProductScreen = () => {
       <ProductStack.Screen name="Product" component={Product} />
       <ProductStack.Screen name="Detail" component={Detail} />
     </ProductStack.Navigator>
+  );
+};
+const HomeScreen = () => {
+  return (
+    <HomeStack.Navigator>
+      <HomeStack.Screen name="Home" component={Home}></HomeStack.Screen>
+      <HomeStack.Screen name="Detail" component={Detail}></HomeStack.Screen>
+    </HomeStack.Navigator>
   );
 };
 
@@ -57,7 +68,7 @@ const screenOptions = ({
     tabBarIcon: ({ focused, color, size }) => {
       // 경로명으로 아이콘 변경
       switch (route.name) {
-        case "Home":
+        case "HomeStack":
           return focused ? (
             <Ionicons name={"home"} size={size} color={color} />
           ) : (
@@ -68,6 +79,12 @@ const screenOptions = ({
             <Ionicons name={"checkmark"} size={size} color={color} />
           ) : (
             <Ionicons name={"checkmark-outline"} size={size} color={color} />
+          );
+        case "Photo":
+          return focused ? (
+            <Ionicons name={"image"} size={size} color={color} />
+          ) : (
+            <Ionicons name={"image-outline"} size={size} color={color} />
           );
         case "ProductStack":
           return focused ? (
@@ -84,8 +101,8 @@ const screenOptions = ({
       }
     },
     // 탭 활성화/비활성화 상태에 따른 컬러
-    tabBarActiveTintColor: "#03045e",
-    tabBarInactiveTintColor: "gray",
+    tabBarActiveTintColor: colors.primary,
+    tabBarInactiveTintColor: colors.muted,
   } as BottomTabNavigationOptions);
 
 export default function App() {
@@ -95,8 +112,13 @@ export default function App() {
       <NavigationContainer>
         {/* screenOptions는 객체 또는 객체반환함수 */}
         <Tab.Navigator screenOptions={screenOptions}>
-          <Tab.Screen name="Home" component={Home} options={{}} />
+          <Tab.Screen
+            name="HomeStack"
+            component={HomeScreen}
+            options={{ headerShown: false, tabBarLabel: "Home" }}
+          />
           <Tab.Screen name="Todo" component={Todo} options={{}} />
+          <Tab.Screen name="Photo" component={Photo} options={{}} />
           <Tab.Screen
             name="ProductStack"
             component={ProductScreen}
